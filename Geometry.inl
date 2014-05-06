@@ -27,6 +27,7 @@ DAMAGE.
 */
 
 #include <cstdio>
+#include <cstdlib>
 
 template<class Real>
 Real Random(void){return Real(rand())/RAND_MAX;}

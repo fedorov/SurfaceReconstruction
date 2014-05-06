@@ -21,7 +21,7 @@
 
 
 #include <vtkPoints.h>
-#include <vtkXMLPolyDataWriter.h>
+#include <vtkPolyDataWriter.h>
 #include <vtkPolyData.h>
 #include <vtkPointData.h>
 #include <vtkSmartPointer.h>
@@ -31,8 +31,7 @@
 #include <vtkVertexGlyphFilter.h>
 #include <vtkMath.h>
 
-#include <vtkXMLPolyDataReader.h>
-#include <vtkXMLPolyDataWriter.h>
+#include <vtkPolyDataReader.h>
 
 
 #include "vtkPoissonReconstruction.h"
@@ -291,13 +290,13 @@ int DoIt( int argc, char * argv[], T )
 
 
 	//		  
-	vtkSmartPointer<vtkXMLPolyDataWriter> writerPoly = vtkSmartPointer<vtkXMLPolyDataWriter>::New();
+	vtkSmartPointer<vtkPolyDataWriter> writerPoly = vtkSmartPointer<vtkPolyDataWriter>::New();
 	writerPoly->SetInput(polydataNew);
 	writerPoly->SetFileName(outputFile.c_str());
 	writerPoly->Update();
 
 
-	vtkSmartPointer<vtkXMLPolyDataReader> readerPoly = vtkSmartPointer<vtkXMLPolyDataReader>::New();
+	vtkSmartPointer<vtkPolyDataReader> readerPoly = vtkSmartPointer<vtkPolyDataReader>::New();
 	readerPoly->SetFileName(outputFile.c_str());
 	readerPoly->Update();
 
@@ -313,7 +312,7 @@ int DoIt( int argc, char * argv[], T )
 
 	//Write the file
 
-	vtkSmartPointer<vtkXMLPolyDataWriter> writerSurface = vtkSmartPointer<vtkXMLPolyDataWriter>::New();
+	vtkSmartPointer<vtkPolyDataWriter> writerSurface = vtkSmartPointer<vtkPolyDataWriter>::New();
 	writerSurface->SetInputConnection(poissonFilter->GetOutputPort());
 	writerSurface->SetFileName(outputSurfaceFile.c_str());
 	writerSurface->Update(); 
